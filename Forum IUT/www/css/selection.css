@@ -1,0 +1,83 @@
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+body {
+  background: url("img/logo_iut_1.png") fixed no-repeat;
+}
+
+#iut-logo-conteneur {
+  width: 100%;
+  height: 20%;
+}
+
+#iut-logo {
+  height: 200px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+#iut-logo img{
+  max-width: 100%;
+}
+
+#conteneur {
+  width: 97%;
+  margin: 0 auto;
+}
+
+#conteneur img {
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+#session-conteneur,
+#envoi-conteneur {
+  height: 100%;
+  width: 50%;
+}
+
+#session-conteneur
+{
+  float: left;
+}
+
+#envoi-conteneur {
+  float: right;
+}
+
+#session-conteneur div,
+#envoi-conteneur div {
+  height: 350px;
+  width: 350px;
+  margin: 0 auto;
+  margin-top: 40%;
+}
+
+#session-conteneur div {
+  margin-left: 28%;
+}
+
+#envoi-conteneur div {
+  margin-right: 28%;
+}
+
+#session-conteneur button,
+#envoi-conteneur button {
+  border: none;
+  background: none;
+  width: inherit;
+  height: inherit;
+  margin: 0 auto;
+}
+
+#session-conteneur button:focus,
+#envoi-conteneur button:focus {
+  outline: none;
+}

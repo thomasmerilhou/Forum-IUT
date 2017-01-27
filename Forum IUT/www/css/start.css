@@ -1,0 +1,17 @@
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+#iut-logo {
+  margin:-100px 0 0 -200px;
+  position:absolute;
+  width:328px;
+  height:140px;
+  left:50%;
+  top:50%;
+}
