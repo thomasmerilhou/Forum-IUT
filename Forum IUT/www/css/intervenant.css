@@ -68,18 +68,18 @@ form select, form option, form input	{
 
 }
 
- #footer img	{
+#footer img {
  
-	width: 20%;
-	position: absolute;
-	bottom: 3%;
+  width: 20%;
+  position: absolute;
+  bottom: 3%;
  
  }
  
-	 #footer #annuler img	{
-		left: 2%;
-	 }
-	 
-	 #footer #valider img	{
-		right: 2%;
-	 }
+   #footer #annuler img {
+    left: 2%;
+   }
+   
+   #footer #valider img {
+    right: 2%;
+   }

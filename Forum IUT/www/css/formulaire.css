@@ -16,16 +16,17 @@ h1 {
   margin: 50px auto;
 }
 
-#valider {
-  float: right;
-  margin-top: 50px;
-  width: 100px;
-  height: 100px;
-  font-size: 35px;
-  border-radius: 50px;
-  border: none;
-  background-color: #e8e8e7;
-}
+#footer img {
+ 
+  width: 20%;
+  position: absolute;
+  bottom: 3%;
+ 
+ }
+    
+   #footer #valider img {
+    right: 2%;
+   }
 
 .erreur-champ {
   background-color: #F2DEDE;

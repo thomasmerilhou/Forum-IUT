@@ -68,7 +68,7 @@ h1 {
 }
 
 
-#valider, #arreter {
+/*#valider, #arreter {
   margin-top: 50px;
   width: 100px;
   height: 100px;
@@ -85,3 +85,20 @@ h1 {
 #arreter {
   float: left;
 }
+*/
+
+#footer img {
+ 
+  width: 20%;
+  position: absolute;
+  bottom: 3%;
+ 
+ }
+ 
+   #footer #annuler img {
+    left: 2%;
+   }
+   
+   #footer #valider img {
+    right: 2%;
+   }

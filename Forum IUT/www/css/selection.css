@@ -8,7 +8,8 @@ html, body {
 }
 
 body {
-  background: url("img/logo_iut_1.png") fixed no-repeat;
+  /* background: url("img/logo_iut_1.png") fixed no-repeat; */
+  background-size: cover;
 }
 
 #iut-logo-conteneur {
