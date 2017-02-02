@@ -119,7 +119,7 @@ window.onload = function () {
     }
   }
 
-  document.getElementById('arreter').onclick = function () {
+  document.getElementById('annuler').onclick = function () {
     window.location = "selection.html";
   }
 }

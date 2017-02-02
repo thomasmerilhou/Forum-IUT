@@ -1,64 +1,71 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Forum IUT</title>
-    <script type="text/javascript" src="js/index.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/formulaire.css">
-  </head>
-  <body>
-    <h1>Veuillez remplir le formulaire ci-dessous</h1>
-    <div id="formulaire-conteneur">
-      <!-- Civilité -->
-      <span>Civilité:</span>
-      <input type= "radio" name="Q3" value="O"> Madame
-      <input type= "radio" name="Q3" value="N"> Monsieur
-      <br />
-      <br />
-      <!-- Nom -->
-      <div class="input-group input-group-lg">
-        <span class="input-group-addon" id="sizing-addon1">Nom</span>
-        <input id="nom" type="text" class="form-control" aria-describedby="sizing-addon1">
+ <head>
+ <meta charset="utf-8" />
+ <title>Forum IUT</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+ <link type="text/css" rel="stylesheet" href="css/formulaire.css" />
+ </head>
+
+ <body>
+
+	<div id="header">
+		<img src="img/iutlittoral-logo.png">
+	</div>
+
+
+	<form novalidate>
+      <div class="renseignement">
+        <label>Civilité : </label>
+          <input type= "radio" name="Q3" value="O"> Madame
+          <input type= "radio" name="Q3" value="N"> Monsieur
       </div>
-      <br />
-      <!-- Prénom -->
-      <div class="input-group input-group-lg">
-        <span class="input-group-addon" id="sizing-addon1">Prénom</span>
-        <input id="prenom" type="text" class="form-control" aria-describedby="sizing-addon1">
+
+      <div class="renseignement">
+        <label>Nom :</label>
+      		<INPUT TYPE="text" NAME="Nom" VALUE="" placeholder="Nom" required>
       </div>
-      <br />
-      <!-- Date de naissance -->
-      <span>Date de naissance:</span>
-      <input type="date" />
-    <br />
-    <br />
-    <!-- Situation -->
-    <span>Situation:</span>
+
+      <div class="renseignement">
+        <label>Prénom :</label>
+          <INPUT TYPE="text" NAME="Prenom" VALUE="" placeholder="Prénom" required>
+      </div>
+
+      <div class="renseignement">
+        <label>Date de naissance :</label>
+          <INPUT TYPE="date" NAME="Date" required>
+      </div>
+
+      <div class="renseignement">
+        <label>Email :</label>
+          <INPUT TYPE="email" NAME="Email" VALUE="" placeholder="Email" required>
+      </div>
+
+      <div class="renseignement">
+        <label>Situation :</label>
+        <select>
+          <option value="Terminale">Terminale</option>
+          <option value="Première">Première</option>
+          <option value="Seconde">Seconde</option>
+          <option value="Antérieur">Antérieur</option>
+          <option value="Etudiant">Etudiant</option>
+        </select>
+      </div>
+
+      <div class="renseignement">
+        <label>Etablissement :</label>
+          <INPUT TYPE="text" NAME="Etablissement" VALUE="" placeholder="Etablissement" required>
+      </div>
+
+      <div class="renseignement">
+        <label>Ville :</label>
+          <INPUT TYPE="text" NAME="Ville" VALUE="" placeholder="Ville" required>
+      </div>
+
+      <div class="renseignement">
+        <label>Département :</label>
     <select>
-      <option value="Terminale">Terminale</option>
-      <option value="Première">Première</option>
-      <option value="Seconde">Seconde</option>
-      <option value="Antérieur">Antérieur</option>
-      <option value="Etudiant">Etudiant</option>
-    </select>
-    <br />
-    <br />
-    <!-- Etablisement -->
-    <div class="input-group input-group-lg">
-      <span class="input-group-addon" id="sizing-addon1">Etablissement</span>
-      <input id="adresse" type="text" class="form-control" aria-describedby="sizing-addon1">
-    </div>
-    <br />
-    <!-- Ville -->
-    <div class="input-group input-group-lg">
-      <span class="input-group-addon" id="sizing-addon1">Ville</span>
-      <input id="adresse" type="text" class="form-control" aria-describedby="sizing-addon1">
-    </div>
-    <br />
-    <!-- Département -->
-    <span>Département:</span>
-    <select>
+	  <option value="62">62 - Pas-de-Calais</option>
       <option value="0"></option>
       <option value="01">01 - Ain</option>
       <option value="02">02 - Aisne</option>
@@ -167,43 +174,35 @@
       <option value="987">987 - Polynesie-franeaise</option>
       <option value="988">988 - Nouvelle-Caledonie</option>
     </select>
-    <br />
-    <br />
-    <!-- Connaissance IUT -->
-    <span>Connaissiez-vous l'IUT avant de venir ici?</span>
-    <input type= "radio" name="Q1" value="O"> Oui
-    <input type= "radio" name="Q1" value="N"> Non
-    <br />
-    <br />
-    <!-- Réponse -->
-    <span>Si oui comment ?</span>
-    <select>
-        <option value ="default">    </option>
-        <option value ="1">Forum</option>
-        <option value ="2">Entourage</option>
-        <option value ="3">Site Web</option>
-        <option value ="4">Réseaux Sociaux</option>
-    </select>
-    <br />
-    <br />
-    <!-- Autre -->
-    <div class="input-group input-group-lg">
-      <span class="input-group-addon" id="sizing-addon1">Autre</span>
-      <input id="adresse" type="text" class="form-control" aria-describedby="sizing-addon1">
-    </div>
-    <br />
-    <!-- Recevoir informations -->
-    <span>Voulez-vous recevoir des informations?</span>
-    <input type= "radio" name="Q3" value="O"> Oui
-    <input type= "radio" name="Q3" value="N"> Non
-      
-    </div>
+	</div>
 
-     <div id="footer">
-    <div id="valider">
-      <img src="img/fleche-next.png">
-    </div>
-  </div>
-    <script type="text/javascript" src="js/formulaire.js"></script>
-  </body>
+      <ul style="disc">
+        <div class="question">
+      <li>Connaissiez-vous l'IUT avant de venir ici ?</li>
+        <input type= "radio" name="Q1" value="O"> Oui
+        <input type= "radio" name="Q1" value="N"> Non
+      </div>
+
+      <li>Si oui, comment ?</li>
+      <select>
+          <option value ="default">    </option>
+          <option value ="1">Forum</option>
+          <option value ="2">Entourage</option>
+          <option value ="3">Site Web</option>
+          <option value ="4">Réseaux Sociaux</option>
+      </select>
+      <INPUT TYPE="text" NAME="Q2AUTRE" VALUE="" placeholder="Autre">
+
+      <li>Voulez-vous recevoir des informations concernant l'IUT ?</li>
+        <input type= "radio" name="Q3" value="O"> Oui
+        <input type= "radio" name="Q3" value="N"> Non
+      </ul>
+
+	</form>
+
+  <button id="envoyer">ENVOYER</button>
+
+	<script type="text/javascript" src="js/formulaire.js"></script>
+
+ </body>
 </html>

@@ -1,33 +1,54 @@
-
-html, body {
-  height: 100%;
-  width: 100%;
-  padding: 0px;
-  margin: 0px;
+* {
+  font-size: 22px;
+  font-style: Arial, "Arial Narrow", "sans-serif";
 }
 
-h1 {
-  text-align: center;
-  font-size: 20px;
+#header img	{
+
+ width: 50%;
+ display: block;
+ margin-left: 1;
+ margin-top: 1%;
+ margin-bottom: 1%;
+
 }
 
-#formulaire-conteneur {
-  width: 90%;
-  margin: 50px auto;
+.renseignement {
+  padding: 8px;
 }
 
-#footer img {
- 
-  width: 20%;
-  position: absolute;
-  bottom: 3%;
- 
- }
-    
-   #footer #valider img {
-    right: 2%;
-   }
+label {
+  margin-left: 20%;
+  padding-left: 7px;
+  border-left: 5px solid red;
+  /*border-left: 5px solid #89ba17;*/
+}
 
-.erreur-champ {
-  background-color: #F2DEDE;
+input, select {
+  padding-left: 7px;
+}
+
+select {
+  width: 280px;
+  min-width: 200px;
+}
+
+ul {
+  padding-left: 10%;
+}
+
+li {
+  display: inline-block;
+  padding: 10px;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid red;
+  background-color: #d7d7d7;
+}
+
+button:focus {
+  box-shadow: 4px 4px 8px #888;
 }
