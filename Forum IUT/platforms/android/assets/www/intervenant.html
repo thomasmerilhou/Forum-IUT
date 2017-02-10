@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <meta charset="utf-8" />
+ <title>Forum IUT</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+ <link type="text/css" rel="stylesheet" href="css/intervenant.css" />
+ </head>
+
+ <body>
+ 
+	<div id="header">
+		<img src="img/iutlittoral-logo.png">
+	</div>
+	
+	<form novalidate>
+		<label>Nom de l'Intervenant</label>
+			<INPUT TYPE="text" NAME="Nom" VALUE="" placeholder="Nom" required>
+			
+		<div id="radio">
+		<label>Rôle de l'Intervenant</label>
+			<input type="radio" name="Role" value="professeur" /> <span>Professeur</span>
+			<input type="radio" name="Role" value="etudiant" /> <span>Etudiant</span>
+		</div>
+		
+		<label>Lieu du Forum</label>
+			<INPUT TYPE="text" NAME="Ville" VALUE="" placeholder="Calais" required>
+			
+		<label>Date du Forum</label>
+			<INPUT TYPE="date" NAME="Date" required>
+			
+	</form>
+	
+	<div id="footer">
+		<div id="annuler">
+			<img src="img/annuler.png">
+		</div>
+		<div id="valider">
+			<img src="img/fleche-next.png">
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/intervenant.js"></script>
+	 
+ </body>
+</html>

@@ -1,0 +1,28 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "fr.forum.iut"
+        },
+        "cordova-plugin-nativestorage": {
+            "PACKAGE_NAME": "fr.forum.iut"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "fr.forum.iut"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "fr.forum.iut"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "fr.forum.iut"
+        }
+    }
+}
