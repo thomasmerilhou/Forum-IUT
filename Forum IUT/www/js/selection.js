@@ -1,63 +1,132 @@
 
+// Ajout de l'événement deviceready
+
 document.addEventListener("deviceready", onDeviceReady, false);
+
+/**
+* Fonction appelée par l'événement deviceready
+*/
 
 function onDeviceReady() {
 
-    var nbEtudiant = 0;
-    var nbSession  = 0;
+  // Création des fichiers nécessaires au fonctionnement de l'application
 
-    document.getElementById('')
+  initializeFile();
 
-    NativeStorage.getInt("nbSession", function(val) {
+  // Ajout des événements sur les boutons
 
-      nbSession = val;
+  document.getElementById("start-session").addEventListener("click", startSession, false);
+  document.getElementById("start-sending").addEventListener("click", startSending, false);
 
-      NativeStorage.getInt("nbEtudiant", function (val) {
+}
 
-        nbEtudiant = val;
+/**
+* Cette fonction exécute les différentes action de l'utilisateur en appelant les
+* fonctions correspondantes
+*/
 
-        alert("nbSession  = " + nbSession);
-        alert("nbEtudiant = " + nbEtudiant);
+function startSending () {
+  if (confirm("Voulez-vous afficher les informations enregistrées ?")) {
+    showData();
+  } else {
+    if (confirm("Voulez-vous supprimer les informations enregistrées ?")) {
+      purgeData();
+    }
+  }
+}
 
-        /*for (var i = 0; i < nbSession; i++) {
+/**
+* Cette fonction crée les fichiers nécessaires au fonctionnement de
+* l'application
+*/
 
-          for (var j = 0; j < nbEtudiant; j++) {
+function initializeFile () {
 
-            NativeStorage.getInt("session-" + i "-etudiant-" + j, function (val) {
+  NativeStorage.getItem("sauvegarde", function (obj) {}, function () {
 
-              alert("Session n° " + i + " Etudiant n° " + j + " = " + val);
+    var obj = new ForumIut();
 
-            }, function () {
+    NativeStorage.setItem("sauvegarde", obj, null, null);
 
-                alert('Aucun fichier trouvé...');
-                return;
+  });
 
-            });
+}
 
-          }
+/**
+* Cette fonction affiche l'intégralité des données sur la tablette
+*/
 
-        }*/
+function showData () {
 
-      }, function () {
+  NativeStorage.getItem("sauvegarde", function (obj) {
 
-        alert("Aucun étudiant sauvegardé");
-        return;
+    for (var i = 0; i < obj.nbSession; i++) {
 
-      });
-    
-    }, function () {
-      
-      alert("Aucune session sauvegardée");
-      return;
-    
-    });
+      var session = obj.sessions[i];
+      var s = "";
 
-  /*document.getElementById("commencer-session").onclick = function () {
-    window.location = "intervenant.html";
-  }*/
+      s += "Session n°" + session.numeroSes + ":\n";
+      s += "   Nom intervenant: " + session.nomIntervenant + "\n";
+      s += "   Rôle: " + session.roleIntervenant + "\n";
+      s += "   Lieu: " + session.lieu + "\n";
+      s += "   Date: " + session.date + "\n";
 
-  //document.getElementById("envoi-conteneur").onclick = function () {
+      alert(s);
 
+      for (var j = 0; j < obj.sessions[i].nbEtudiant; j++) {
 
-  //}
+        var etudiant = obj.sessions[i].etudiants[j];
+        var s = "";
+
+        s += "Session n°" + etudiant.numeroSes + " etudiant n°" + etudiant.numeroEtu + ":\n";
+        s += "   Conditions: " + etudiant.condition + "\n";
+        s += "   Formation(s):" + etudiant.formations + "\n";
+        s += "   Nom étudiant: " + etudiant.nom + "\n";
+        s += "   Prénom étudiant: " + etudiant.prenom + "\n";
+        s += "   Date de naissance: " + etudiant.naissance + "\n";
+        s += "   Email: " + etudiant.email + "\n";
+        s += "   Situation: " + etudiant.situation + "\n";
+        s += "   Etablissement: " + etudiant.etablissement + "\n";
+        s += "   Ville: " + etudiant.ville + "\n";
+        s += "   Département: " + etudiant.departement + "\n";
+        s += "   Connait IUT: " + etudiant.connaitIUT + "\n";
+        s += "   Comment: " + etudiant.connaitHOW + "\n";
+        s += "   Envoyer infos: " + etudiant.recevoirInfos + "\n";
+
+        alert(s);
+
+      }
+
+    }
+
+  }, function () {
+
+    alert("FATAL ERROR: Impossible de lire le fichier 'sauvegarde'...");
+    return;
+
+  });
+
+}
+
+/**
+* Cette fonction supprime l'intégralité des données et génère les fichiers
+* nécessaires au fonctionnement de l'application
+*/
+
+function purgeData () {
+  NativeStorage.clear(function () {
+    alert("Suppression réussie !");
+    initializeFile();
+  }, function () {
+    alert("FATAL ERROR: Echec de la suppression...");
+    return;
+  });
+}
+
+/**
+* Cette fonction redirige vers la page intervenant.html
+*/
+
+function startSession () {
+  document.location = "intervenant.html";
 }

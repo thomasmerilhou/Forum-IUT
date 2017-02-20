@@ -1,97 +1,192 @@
 
-// créer un fichier de sessions + ficiher contenant 
+// Tableau contenant les formations sélectionnées par l'étudiant
 
-var formSelect = [];
-var nbEtudiant = 0;
+var formEtudiant = [];
 
+// Ajout de l'événement deviceready
 
-function actionFormation(id) {
-  if (formSelect.indexOf(id) == -1) {
-    this.selectionnerFormation(id);
-  } else {
-    this.deselectionnerFormation(id);
-  }
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady () {
+
+	// Ajout des événements sur les boutons
+
+  document.getElementById("gaco").addEventListener("click", gaco, false);
+  document.getElementById("gea").addEventListener("click", gea, false);
+  document.getElementById("tc").addEventListener("click", tc, false);
+  document.getElementById("geii").addEventListener("click", geii, false);
+  document.getElementById("info").addEventListener("click", info, false);
+  document.getElementById("gim").addEventListener("click", gim, false);
+  document.getElementById("bio").addEventListener("click", bio, false);
+  document.getElementById("gte").addEventListener("click", gte, false);
+
+  // Ajout de l'événement valider sur le bouton valider
+
+  document.getElementById('valider').addEventListener("click", saveData, false);
+
+  // Ajout de l'événement annuler sur le bouton annuler
+
+  document.getElementById('annuler').addEventListener("click", cancel, false);
+
 }
 
-function selectionnerFormation(id) {
-  document.getElementById(id).style.backgroundColor = "black";
-  formSelect.push(id);
+function gaco () {
+  actionFormation("gaco");
 }
 
-function deselectionnerFormation(id) {
-  var backgroundColor = "";
-
-  if (id === "gaco" || id === "gea"  || id === "tc") {
-    backgroundColor = "#d73362";
-  }
-  else if (id === "geii" || id === "info") {
-    backgroundColor = "#0093d2";
-  }
-  else if (id === "gim") {
-    backgroundColor = "#848687";
-  }
-  else if (id === "bio") {
-    backgroundColor = "#89ba17";
-  }
-  else if (id === "gte") {
-    backgroundColor = "#f08a00";
-  }
-
-  document.getElementById(id).style.backgroundColor = backgroundColor;
-  formSelect.splice(formSelect.indexOf(id), 1);
+function gea () {
+  actionFormation("gea");
 }
 
-document.addEventListener('deviceready', function() {
+function tc () {
+  actionFormation("tc");
+}
 
-  /** Mise en place des éléments relatives à la formation */
+function geii ()  {
+  actionFormation("geii");
+}
 
-  document.getElementById('gaco').onclick = function () {
-    actionFormation('gaco');
-  }
+function info () {
+  actionFormation("info");
+}
 
-  document.getElementById('gea').onclick = function () {
-    actionFormation('gea');
-  }
+function gim () {
+  actionFormation("gim");
+}
 
-  document.getElementById('tc').onclick = function () {
-    actionFormation('tc');
-  }
+function bio () {
+  actionFormation("bio");
+}
 
-  document.getElementById('geii').onclick = function () {
-    actionFormation('geii');
-  }
+function gte () {
+  actionFormation("gte");
+}
 
-  document.getElementById('info').onclick = function () {
-    actionFormation('info');
-  }
+function saveData () {
 
-  document.getElementById('gim').onclick = function () {
-    actionFormation('gim');
-  }
+  // Création de l'objet étudiant
 
-  document.getElementById('bio').onclick = function () {
-    actionFormation('bio');
-  }
+  var etudiant =
+  {
+    condition: false,
+    formations: ""
+  };
 
-  document.getElementById('gte').onclick = function () {
-    actionFormation('gte');
-  }
+  // Récupération de la valeur du bouton pour accepter les conditions
 
-  /** Mise en place de l'événement de finalisation */
+  etudiant.condition = document.forms.formulaire.conditions.checked;
 
-  document.getElementById('valider').onclick = function () {
-    //  fileManager.initialize();
-    if (formSelect.length > 0) {
-      if (confirm("Êtes-vous sûr(e) de vouloir valider les formations choisies ?")) {
-        //sauvegarderFormation();
-        window.location = "formulaire.html";
-      }
+  // Récupération des formations choisies
+
+  for (var i = 0; i < formEtudiant.length; i++) {
+    if (i + 1 < formEtudiant.length) {
+      etudiant.formations += formEtudiant[i].toUpperCase() + "-";
     } else {
-      alert("Vous devez choisir une formation...");
+      etudiant.formations += formEtudiant[i].toUpperCase();
     }
   }
 
-  document.getElementById('annuler').onclick = function () {
-    window.location = "selection.html";
+  if (isValidData(etudiant)) {
+
+    if (confirm("Êtes-vous sûr(e) de vouloir valider les formations choisies ?")) {
+
+      NativeStorage.getItem("sauvegarde", function (obj) {
+
+        // Ajout d'un étudiant
+
+        var indexSession  = obj.nbSession - 1;
+
+        obj.sessions[indexSession].nbEtudiant++;
+
+        var indexEtudiant = obj.sessions[indexSession].nbEtudiant - 1;
+
+        obj.sessions[indexSession].etudiants.push(new Etudiant(obj.nbSession, indexEtudiant + 1));
+
+
+        var indexEtudiant = obj.sessions[indexSession].nbEtudiant - 1;
+
+        obj.sessions[indexSession].etudiants[indexEtudiant].condition = etudiant.condition;
+        obj.sessions[indexSession].etudiants[indexEtudiant].formations = etudiant.formations;
+
+        NativeStorage.setItem("sauvegarde", obj, function () {
+
+          alert("Enregistrement réussi !");
+          window.location = "formulaire.html";
+
+        }, function () {
+
+          alert("FATAL ERROR: Impossible de modifier le fichier 'sauvegarde'...");
+          return;
+
+        });
+
+      }, function () {
+
+        alert("FATAL ERROR: Impossible de lire le fichier 'sauvegarde'...");
+        return;
+
+      });
+
+    }
+
   }
-});
+}
+
+function isValidData (etudiant) {
+  var errors = "";
+
+  if (etudiant.condition == false) {
+    errors += " * Vous devez accepter les conditions d'utilisation\n";
+  }
+
+  if (etudiant.formations.length == 0) {
+    errors += " * Vous devez choisir une formation...\n";
+  }
+
+  if (errors == "") {
+    return true;
+  }
+
+  alert(errors);
+  return false;
+}
+
+function actionFormation(id) {
+  if (formEtudiant.indexOf(id) == -1) {
+    enableFormation(id);
+  } else {
+    disableFormation(id);
+  }
+}
+
+function enableFormation(id) {
+  document.getElementById(id).style.backgroundColor = "black";
+  formEtudiant.push(id);
+}
+
+function disableFormation(id) {
+  var bc = "";
+
+  if (id === "gaco" || id === "gea"  || id === "tc") {
+    bc = "#d73362";
+  }
+  else if (id === "geii" || id === "info") {
+    bc = "#0093d2";
+  }
+  else if (id === "gim") {
+    bc = "#848687";
+  }
+  else if (id === "bio") {
+    bc = "#89ba17";
+  }
+  else if (id === "gte") {
+    bc = "#f08a00";
+  }
+
+  document.getElementById(id).style.backgroundColor = bc;
+  formEtudiant.splice(formEtudiant.indexOf(id), 1);
+}
+
+function cancel () {
+  window.location = "selection.html";
+}
