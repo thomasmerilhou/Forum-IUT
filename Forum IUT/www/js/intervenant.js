@@ -95,7 +95,6 @@ function saveData () {
 
 			NativeStorage.setItem("sauvegarde", obj, function () {
 
-				alert("Enregistrement réussi !");
 				window.location = "formation.html";
 
 			}, function () {

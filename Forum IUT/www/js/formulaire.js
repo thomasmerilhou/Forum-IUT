@@ -93,8 +93,7 @@ function saveData () {
       obj.sessions[indexSession].etudiants[indexEtudiant].recevoirInfos = etudiant.recevoirInfos;
 
       NativeStorage.setItem("sauvegarde", obj, function () {
-
-        alert("Enregistrement réussi !");
+        
         window.location = "succes.html";
 
       }, function () {

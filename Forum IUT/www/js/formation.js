@@ -110,7 +110,6 @@ function saveData () {
 
         NativeStorage.setItem("sauvegarde", obj, function () {
 
-          alert("Enregistrement réussi !");
           window.location = "formulaire.html";
 
         }, function () {
