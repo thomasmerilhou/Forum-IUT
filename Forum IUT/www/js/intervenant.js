@@ -1,4 +1,12 @@
 
+/**
+* intervenant.js
+* =============
+*
+* Définit les différentes interractions ainsi que l'enregistrement
+* des données pour le fichier intervenant.html.
+*/
+
 // Ajout de l'événement deviceready
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -10,6 +18,13 @@ function onDeviceReady () {
 		document.getElementById("valider").addEventListener("click", saveData, false);
 		document.getElementById("annuler").addEventListener("click", cancel, false);
 }
+
+/**
+* Vérifie si les données sont valides avant d'être
+* enregistrée.
+* @param data Les données à enregistrer
+* @return Les erreurs
+*/
 
 function isValidData (data) {
 	var errors = "";
@@ -58,6 +73,11 @@ function isValidData (data) {
 	alert(errors);
 	return false;
 }
+
+/**
+* Fonction enregistrant les données dans un fichier
+* sur la tablette.
+*/
 
 function saveData () {
 
@@ -113,6 +133,10 @@ function saveData () {
 
 	}
 }
+
+/**
+* Cette fonction retourne à la page selection.html
+*/
 
 function cancel () {
 	window.location = "selection.html";

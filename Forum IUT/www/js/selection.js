@@ -1,4 +1,12 @@
 
+/**
+* selection.js
+* =============
+*
+* Définit les différentes interractions ainsi que l'enregistrement
+* des données pour le fichier selection.html.
+*/
+
 // Ajout de l'événement deviceready
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -58,9 +66,14 @@ function initializeFile () {
 
 function showData () {
 
+  // Lecture du fichier sauvegarde
+
   NativeStorage.getItem("sauvegarde", function (obj) {
 
     for (var i = 0; i < obj.nbSession; i++) {
+
+      // Affichage des données dans des alertes de toutes les
+      // informations enregistrées
 
       var session = obj.sessions[i];
       var s = "";

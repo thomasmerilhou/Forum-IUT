@@ -1,4 +1,12 @@
 
+/**
+* formation.js
+* =============
+*
+* Définit les différentes interractions ainsi que l'enregistrement
+* des données pour le fichier formation.html.
+*/
+
 // Tableau contenant les formations sélectionnées par l'étudiant
 
 var formEtudiant = [];
@@ -6,6 +14,10 @@ var formEtudiant = [];
 // Ajout de l'événement deviceready
 
 document.addEventListener("deviceready", onDeviceReady, false);
+
+/**
+* Fonction appelée lorsque l'appareil est prêt
+*/
 
 function onDeviceReady () {
 
@@ -29,6 +41,10 @@ function onDeviceReady () {
   document.getElementById('annuler').addEventListener("click", cancel, false);
 
 }
+
+/**
+* Actions relative à chaque formation.
+*/
 
 function gaco () {
   actionFormation("gaco");
@@ -61,6 +77,11 @@ function bio () {
 function gte () {
   actionFormation("gte");
 }
+
+/**
+* Fonction enregistrant les données dans un fichier
+* sur la tablette.
+*/
 
 function saveData () {
 
@@ -131,6 +152,13 @@ function saveData () {
   }
 }
 
+/**
+* Vérifie si les données sont valides avant d'être
+* enregistrée.
+* @param data Les données à enregistrer
+* @return Les erreurs
+*/
+
 function isValidData (etudiant) {
   var errors = "";
 
@@ -150,6 +178,11 @@ function isValidData (etudiant) {
   return false;
 }
 
+/**
+* Cette fonction active ou désactive les boutons de formations
+* @param id ID des boutons de formation
+*/
+
 function actionFormation(id) {
   if (formEtudiant.indexOf(id) == -1) {
     enableFormation(id);
@@ -158,10 +191,20 @@ function actionFormation(id) {
   }
 }
 
+/**
+* Cette fonction active les boutons de formations
+* @param id ID du bouton de formation
+*/
+
 function enableFormation(id) {
   document.getElementById(id).style.backgroundColor = "black";
   formEtudiant.push(id);
 }
+
+/**
+* Cette fonction désactive les boutons de formations
+* @param id ID du bouton de formation
+*/
 
 function disableFormation(id) {
   var bc = "";
@@ -185,6 +228,10 @@ function disableFormation(id) {
   document.getElementById(id).style.backgroundColor = bc;
   formEtudiant.splice(formEtudiant.indexOf(id), 1);
 }
+
+/**
+* Cette fonction permet de retourner à la page selection.html
+*/
 
 function cancel () {
   window.location = "selection.html";

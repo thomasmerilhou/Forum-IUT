@@ -9,16 +9,30 @@
  display: block;
  margin-left: 1;
  margin-top: 1%;
- margin-bottom: 1%;
+ margin-bottom: 3%;
 
 }
 
-.renseignement {
-  padding: 8px;
+table {
+	margin: 15px auto;
+	border-collapse: collapse;
 }
 
-label {
-  margin-left: 20%;
+table th {
+	width: 50%;
+	padding: 10px;
+	text-align: left;
+	font-weight: normal;
+}
+
+table td {
+	padding: 5px;
+}
+
+
+
+table label {
+  margin-left: 15%;
   padding-left: 7px;
   border-left: 5px solid red;
   /*border-left: 5px solid #89ba17;*/
@@ -34,7 +48,7 @@ select {
 }
 
 ul {
-  padding-left: 10%;
+  padding-left: 5%;
 }
 
 li {
@@ -42,13 +56,30 @@ li {
   padding: 10px;
 }
 
+.question {
+  padding-left: 100px;
+}
+
+.autre {
+  padding-left: 100px;
+  padding-top: 5px;
+}
+
 button {
   display: block;
   margin: 0 auto;
-  border: 1px solid red;
-  background-color: #d7d7d7;
+  border-radius: 5px;
+  border: 1px solid rgb(23, 189, 237);
+  color: white;
+  font-size: 19px;
+  font-weight: bold;
+  padding: 15px 55px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px rgb(38, 54, 102);
+  background: rgb(23, 189, 237) linear-gradient(to bottom, rgb(23, 189, 237) 5%, rgb(6, 136, 250) 100%) repeat scroll 0% 0%;
 }
 
 button:focus {
   box-shadow: 4px 4px 8px #888;
 }
+
