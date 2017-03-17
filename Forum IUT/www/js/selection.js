@@ -24,8 +24,18 @@ function onDeviceReady() {
   // Ajout des événements sur les boutons
 
   document.getElementById("start-session").addEventListener("click", startSession, false);
-  document.getElementById("start-sending").addEventListener("click", startSending, false);
+  document.getElementById("start-display").addEventListener("click", startDisplay, false);
+  document.getElementById("envoyer-infos").addEventListener("click", envoyerInfos, false);
+  document.getElementById("afficher-apropos").addEventListener("click", afficherAPropos, false);
 
+}
+
+function afficherAPropos() {
+  alert("Copyright (c) IUT calais");
+}
+
+function envoyerInfos() {
+  alert("Pas encore disponible...");
 }
 
 /**
@@ -33,7 +43,7 @@ function onDeviceReady() {
 * fonctions correspondantes
 */
 
-function startSending () {
+function startDisplay () {
   if (confirm("Voulez-vous afficher les informations enregistrées ?")) {
     showData();
   } else {
